@@ -25,7 +25,8 @@
   },
   "outbounds": [
     {"tag": "🚀 默认代理", "type": "selector", "outbounds": ["🇭🇰 香港手动", "🇹🇼 台湾手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择", "♻️ 自动选择"],"default": "🇭🇰 香港手动"},
-    {"tag": "🧠 AI", "type": "selector", "outbounds": ["🇹🇼 台湾手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动"],"default": "🇹🇼 台湾手动"},
+    {"tag": "🍿 MyEmby", "type": "selector", "outbounds": ["🇭🇰 香港手动", "🇹🇼 台湾手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择"],"default": "🇸🇬 狮城手动"},
+    {"tag": "🧠 AI", "type": "selector", "outbounds": ["🇹🇼 台湾手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择"],"default": "🇹🇼 台湾手动"},
     {"tag": "📹 YouTube", "type": "selector", "outbounds": ["🇭🇰 香港手动", "🇹🇼 台湾手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择"],"default": "🇭🇰 香港手动"},
     {"tag": "🍀 Google", "type": "selector", "outbounds": ["🇭🇰 香港手动", "🇹🇼 台湾手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择"],"default": "🇭🇰 香港手动"},
     {"tag": "👨‍💻 Github", "type": "selector", "outbounds": ["🇭🇰 香港手动", "🇹🇼 台湾手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择"],"default": "🇭🇰 香港手动"},
@@ -62,6 +63,7 @@
       {"clash_mode": "direct", "outbound": "🎯 全球直连"},
       {"clash_mode": "global", "outbound": "GLOBAL"},
       {"rule_set": "geosite-ads", "action": "reject"},
+      {"rule_set": "geosite-myemby", "outbound": "🍿 MyEmby"},
       {"rule_set": "geosite-ai", "outbound": "🧠 AI"},
       {"rule_set": "geosite-youtube", "outbound": "📹 YouTube"},
       {"rule_set": "geosite-google", "outbound": "🍀 Google"},
@@ -85,6 +87,7 @@
       {"rule_set": "geoip-cn", "outbound": "🎯 全球直连"}
     ],
     "rule_set": [
+      {"tag": "geosite-myemby", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/likecreep/sing-ruleset/refs/heads/ruleset/emby.srs", "download_detour": "🚀 默认代理"},
       {"tag": "geosite-fakeipfilter", "type": "remote", "format": "source", "url": "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/rules/fakeipfilter.json", "download_detour": "🚀 默认代理"},
       {"tag": "geosite-ai", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ai-!cn.srs", "download_detour": "🚀 默认代理"},
       {"tag": "geosite-youtube", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs", "download_detour": "🚀 默认代理"},
