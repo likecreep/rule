@@ -11,11 +11,11 @@
       {"clash_mode": "direct", "server": "lan"},
       {"clash_mode": "global", "server": "fakeip"},
       {"query_type": "HTTPS", "action": "reject"},
-      {"domain_suffix": [".local", ".lan", "miwifi.com"],"rule_set": "private","server": "local"},
+      {"domain_suffix": [".local", ".lan", "miwifi.com"],"rule_set": "private","server": "lan"},
       {"rule_set": "geosite-fakeipfilter", "server": "local"},
-      {"rule_set": "ads", "action": "predefined"}
-      {"query_type": ["A", "AAAA"], "server": "fakeip", "rewrite_ttl": 1},
-      {"rule_set": "geosite-cn", "server": "local"}
+      {"rule_set": "geosite-ads", "action": "predefined"},
+      {"rule_set": "geosite-cn", "server": "local"},
+      {"query_type": ["A", "AAAA"], "server": "fakeip", "rewrite_ttl": 1}
     ],
     "final": "foreign",
     "client_subnet": "223.5.5.0/24",
@@ -106,7 +106,7 @@
       {"tag": "geoip-netflix", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs", "download_detour": "🚀 默认代理"},
       {"tag": "geoip-cn", "type": "remote", "format": "binary", "url": "https://github.com/qljsyph/ruleset-icon/raw/refs/heads/main/sing-box/geoip/China-ASN-combined-ip.srs", "download_detour": "🚀 默认代理"},
       {"tag": "private","type": "remote","format": "binary","url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs","download_detour": "🚀 默认代理"},
-      {"tag": "ads","type": "remote","format": "binary","url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads.srs","download_detour": "🚀 默认代理"}
+      {"tag": "geosite-ads","type": "remote","format": "binary","url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads.srs","download_detour": "🚀 默认代理"}
     ],
     "final": "🐠 漏网之鱼",
     "default_domain_resolver": {"server": "public"}
