@@ -2,15 +2,18 @@
   "dns": {
     "servers": [
       {"tag": "local", "type": "udp", "server": "223.5.5.5"},
+      {"tag": "lan","type": "local"},
       {"tag": "public", "type": "https", "server": "dns.alidns.com", "domain_resolver": "local"},
       {"tag": "foreign", "type": "https", "server": "8.8.8.8", "detour": "🚀 默认代理"},
       {"tag": "fakeip", "type": "fakeip", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18"}
     ],
     "rules": [
-      {"clash_mode": "direct", "server": "local"},
+      {"clash_mode": "direct", "server": "lan"},
       {"clash_mode": "global", "server": "fakeip"},
       {"query_type": "HTTPS", "action": "reject"},
+      {"domain_suffix": [".local", ".lan", "miwifi.com"],"rule_set": "private","server": "local"},
       {"rule_set": "geosite-fakeipfilter", "server": "local"},
+      {"rule_set": "ads", "action": "predefined"}
       {"query_type": ["A", "AAAA"], "server": "fakeip", "rewrite_ttl": 1},
       {"rule_set": "geosite-cn", "server": "local"}
     ],
@@ -101,7 +104,9 @@
       {"tag": "geoip-apple", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/apple.srs", "download_detour": "🚀 默认代理"},
       {"tag": "geoip-telegram", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs", "download_detour": "🚀 默认代理"},
       {"tag": "geoip-netflix", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs", "download_detour": "🚀 默认代理"},
-      {"tag": "geoip-cn", "type": "remote", "format": "binary", "url": "https://github.com/qljsyph/ruleset-icon/raw/refs/heads/main/sing-box/geoip/China-ASN-combined-ip.srs", "download_detour": "🚀 默认代理"}
+      {"tag": "geoip-cn", "type": "remote", "format": "binary", "url": "https://github.com/qljsyph/ruleset-icon/raw/refs/heads/main/sing-box/geoip/China-ASN-combined-ip.srs", "download_detour": "🚀 默认代理"},
+      {"tag": "private","type": "remote","format": "binary","url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs","download_detour": "🚀 默认代理"},
+      {"tag": "ads","type": "remote","format": "binary","url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads.srs","download_detour": "🚀 默认代理"}
     ],
     "final": "🐠 漏网之鱼",
     "default_domain_resolver": {"server": "public"}
