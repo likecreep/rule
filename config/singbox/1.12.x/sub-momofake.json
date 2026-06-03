@@ -10,7 +10,7 @@
     "rules": [
       {"clash_mode": "direct", "server": "lan"},
       {"clash_mode": "global", "server": "fakeip"},
-      {"query_type": "HTTPS", "action": "reject"},
+      {"query_type": ["SVCB", "HTTPS", "PTR"], "action": "reject"},
       {"domain_suffix": [".local", ".lan", "miwifi.com"],"rule_set": "private","server": "lan"},
       {"rule_set": "geosite-fakeipfilter", "server": "local"},
       {"rule_set": "geosite-ads", "action": "predefined"},
