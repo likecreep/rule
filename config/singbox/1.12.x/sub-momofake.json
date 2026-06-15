@@ -32,7 +32,7 @@
     {"tag": "👨‍💻 Github", "type": "selector", "outbounds": ["🇭🇰 香港手动", "🇬🇧 英国手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择"],"default": "🇭🇰 香港手动"},
     {"tag": "📲 Telegram", "type": "selector", "outbounds": ["🇭🇰 香港手动", "🇬🇧 英国手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择"],"default": "🇭🇰 香港手动"},
     {"tag": "🎵 TikTok", "type": "selector", "outbounds": ["🇬🇧 英国手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择"],"default": "🇬🇧 英国手动"},
-    {"tag": "🎥 Netflix", "type": "selector", "outbounds": ["🇭🇰 香港手动", "🇬🇧 英国手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择"],"default": "🚀 默认代理"},
+    {"tag": "🎥 Netflix", "type": "selector", "outbounds": ["🇭🇰 香港手动", "🇬🇧 英国手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择"],"default": "🐸 手动选择"},
     {"tag": "💶 PayPal", "type": "selector", "outbounds": ["🇭🇰 香港手动", "🇬🇧 英国手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择"],"default": "🇭🇰 香港手动"},
     {"tag": "🎮 Steam", "type": "selector", "outbounds": ["🇭🇰 香港手动", "🇬🇧 英国手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择"],"default": "🇭🇰 香港手动"},
     {"tag": "🪟 Microsoft", "type": "selector", "outbounds": ["🇭🇰 香港手动", "🇬🇧 英国手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择"],"default": "🇭🇰 香港手动"},
