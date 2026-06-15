@@ -40,7 +40,7 @@
     {"tag": "🍏 Apple", "type": "selector", "outbounds": ["🎯 全球直连", "🇭🇰 香港手动", "🇬🇧 英国手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择"],"default": "🎯 全球直连"},
     {"tag": "🐠 漏网之鱼", "type": "selector", "outbounds": ["🚀 默认代理", "🎯 全球直连"],"default": "🚀 默认代理"},
     {"tag": "🇭🇰 香港手动", "type": "selector", "outbounds": []},
-    {"tag": "🇹🇼 台湾手动", "type": "selector", "outbounds": []},
+    {"tag": "🇹🇼 台湾手动", "type": "selector", "outbounds": ["🎯 全球直连"]},
     {"tag": "🇯🇵 日本手动", "type": "selector", "outbounds": []},
     {"tag": "🇸🇬 狮城手动", "type": "selector", "outbounds": []},
     {"tag": "🇬🇧 英国手动", "type": "urltest", "outbounds": []},
