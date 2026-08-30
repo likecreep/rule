@@ -1,26 +1,23 @@
 {
   "dns": {
     "servers": [
-      {"tag": "local", "type": "udp", "server": "223.5.5.5"},
-      {"tag": "lan","type": "local"},
-      {"tag": "public", "type": "https", "server": "dns.alidns.com", "domain_resolver": "local"},
-      {"tag": "foreign", "type": "https", "server": "8.8.8.8", "detour": "🚀 默认代理"},
-      {"tag": "fakeip", "type": "fakeip", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18"}
+      {"tag": "local", "type": "local", "prefer_go": true},
+      {"tag": "ali", "type": "https", "server": "223.5.5.5"},
+      {"tag": "google", "type": "https", "server": "8.8.8.8", "detour": "🚀 默认代理"},
+      {"tag": "fakeip", "type": "fakeip", "inet4_range": "198.19.0.0/16", "inet6_range": "2001:db8::/32"}
     ],
     "rules": [
-      {"clash_mode": "direct", "server": "lan"},
-      {"clash_mode": "global", "server": "fakeip"},
-      {"query_type": ["SVCB", "HTTPS", "PTR"], "action": "reject"},
-      {"domain_suffix": [".local", ".lan", "miwifi.com"],"rule_set": "private","server": "lan"},
-      {"rule_set": "geosite-fakeipfilter", "server": "local"},
-      {"rule_set": "geosite-ads", "action": "predefined"},
-      {"rule_set": "geosite-cn", "server": "local"},
-      {"query_type": ["A", "AAAA"], "server": "fakeip", "rewrite_ttl": 1}
+      {"query_type": ["HTTPS", "SVCB"], "action": "reject"},
+      {"clash_mode": "Direct", "server": "ali"},
+      {"clash_mode": "Global", "server": "fakeip"},
+      {"rule_set": "geosite-fakeipfilter-cn", "server": "ali"},
+      {"query_type": ["A", "AAAA"], "server": "fakeip", "rewrite_ttl": 1},
+      {"rule_set": "geosite-cn","server": "ali"}
     ],
-    "final": "foreign",
-    "client_subnet": "223.5.5.0/24",
+    "final": "google",
     "strategy": "prefer_ipv4",
     "independent_cache": true,
+    "cache_capacity": 8192,
     "reverse_mapping": true
   },
   "outbounds": [
@@ -59,8 +56,12 @@
   ],
   "route": {
     "rules": [
-      {"action": "sniff", "sniffer": ["http", "tls", "quic", "dns"]},
+      {"type": "logical", "mode": "or", "rules": [{"domain_suffix": "push.apple.com"}, {"rule_set": "geoip-telegram"}], "invert": true, "action": "sniff", "sniffer": ["http", "tls", "quic", "dns"], "timeout": "500ms"},
       {"inbound": "dns-in", "action": "hijack-dns"},
+      {"ip_is_private": true, "outbound": "🎯 全球直连"},
+      {"type": "logical", "mode": "or", "rules": [{"port": 853}, {"protocol": ["stun", "quic"]}], "action": "reject", "no_drop": true},
+      {"network": "icmp", "action": "resolve"},
+      {"network": "icmp", "outbound": "🎯 全球直连"},
       {"ip_is_private": true, "outbound": "🎯 全球直连"},
       {"clash_mode": "direct", "outbound": "🎯 全球直连"},
       {"clash_mode": "global", "outbound": "GLOBAL"},
@@ -115,7 +116,8 @@
       {"tag": "geosite-ads","type": "remote","format": "binary","url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads.srs","download_detour": "🚀 默认代理"}
     ],
     "final": "🐠 漏网之鱼",
-    "default_domain_resolver": {"server": "public"}
+    "auto_detect_interface": true,
+    "default_domain_resolver": {"server": "ali"}
   },
   "inbounds": [
     {
@@ -163,17 +165,23 @@
   "experimental": {
     "cache_file": {
       "enabled": true,
-      "path": "/etc/momo/run/cache.db",
       "store_fakeip": true
     },
     "clash_api": {
       "external_controller": "0.0.0.0:9095",
-      "external_ui": "/etc/momo/run/ui",
+      "external_ui": "ui",
       "external_ui_download_url": "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip",
       "external_ui_download_detour": "🚀 默认代理",
       "secret": "",
-      "default_mode": "rule"
+      "default_mode": "Rule"
     }
+  },
+  "certificate": {
+    "store": "chrome"
+  },
+  "ntp": {
+    "enabled": true,
+    "server": "time.apple.com"
   },
   "log": {
     "disabled": false,
